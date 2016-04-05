@@ -69,7 +69,7 @@ public class GameView extends JPanel implements ComponentListener {
         this.addMouseListener( new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                gameModel.startGame();
+                gameModel.keyEvent(KeyEvent.VK_SPACE);
             }
         });
     }
