@@ -82,14 +82,14 @@ public class Breakout extends JFrame{
         c.gridheight = 2;
         pnlSplash.add(btnStart, c);
         title = new JTextArea("BREAKOUT!");
-        title.setFont(new Font("TimesRoman", Font.BOLD, 54));
+        title.setFont(new Font("TimesRoman", Font.BOLD, (int)(54 * Breakout.ratioDPI)));
         title.setBackground(new Color(0, 0, 0, 0));
         title.setEditable(false);
         title.setHighlighter(null);
         c.gridy = 0;
         pnlSplash.add(title, c);
         description = new JTextArea("\nHow to play:\nControl the paddle with the mouse or the left and right keys on the keyboard\nThe ball will bounce off the paddle at an angle based on where it hits the paddle\nHitting a block with the ball will cause the block to disappear, giving you one point and causing the ball to bounce\nYou start with 3 lives and you lose a life if the ball reaches the bottom edge\nYou win after destroying all the blocks and you lose if lose all your lives\nPress escape to exit the game or space to pause the game\nChange the speed of the ball with the up and down keys\n");
-        description.setFont(new Font("TimesRoman", Font.PLAIN, 12));
+        description.setFont(new Font("TimesRoman", Font.PLAIN, (int)(12 * Breakout.ratioDPI)));
         description.setBackground(new Color(0, 0, 0, 0));
         description.setEditable(false);
         description.setHighlighter(null);

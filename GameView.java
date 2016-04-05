@@ -60,6 +60,11 @@ public class GameView extends JPanel implements ComponentListener {
             public void mouseMoved(MouseEvent e) {
                 gameModel.setPaddleX(((double)e.getX() / (double)getWidth()) - gameModel.getPaddleWidth() / 2);
             }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                mouseMoved(e);
+            }
         });
         this.addMouseListener( new MouseAdapter() {
             @Override
