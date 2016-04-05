@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class Breakout extends JFrame{
 
+    public static final double ratioDPI = Toolkit.getDefaultToolkit().getScreenResolution() / Constants.DEFAULT_DPI;
+
     // PUBLIC
 
     public static void main(String[] args) {
@@ -41,8 +43,23 @@ public class Breakout extends JFrame{
     private void initUI() {
         this.setTitle("Breakout");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(Constants.INITIAL_WIDTH, Constants.INITIAL_HEIGHT));
-        this.setMinimumSize(new Dimension(Constants.INITIAL_WIDTH / 2, Constants.INITIAL_HEIGHT / 2));
+        this.setPreferredSize(new Dimension((int)(Constants.INITIAL_WIDTH * Breakout.ratioDPI), (int)(Constants.INITIAL_HEIGHT * Breakout.ratioDPI)));
+        this.setMinimumSize(new Dimension((int)((Constants.INITIAL_WIDTH / 2) * Breakout.ratioDPI), (int)((Constants.INITIAL_HEIGHT / 2) * Breakout.ratioDPI)));
+
+        Font menuFont = (Font)UIManager.get("Menu.font");
+        Font f = new Font(menuFont.getFontName(), menuFont.getStyle(), (int)(menuFont.getSize() * Breakout.ratioDPI));
+        Color color = new Color(240, 240, 240);
+        java.util.Enumeration keys = UIManager.getDefaults().keys();
+        while(keys.hasMoreElements()) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get (key);
+            if(value != null && value instanceof javax.swing.plaf.FontUIResource) {
+                UIManager.put(key, f);
+            }
+            if(value != null && value instanceof javax.swing.plaf.ColorUIResource && key.toString().contains(".background")) {
+                UIManager.put(key, color);
+            }
+        }
 
         Action startAction = new AbstractAction() {
             public void actionPerformed(ActionEvent evt) {

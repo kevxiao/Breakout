@@ -75,11 +75,11 @@ public class GameView extends JPanel implements ComponentListener {
         Graphics2D g2d = (Graphics2D)g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.white);
-        g2d.drawString("Score: " + Integer.toString(this.gameModel.getScore()), 20, 20);
-        g2d.drawString("Lives: " + Integer.toString(this.gameModel.getLives()), 20, this.getHeight() - 15);
-        g2d.drawString("Frames per second: " + Long.toString(Math.round(redrawRate)), this.getWidth() - 150, this.getHeight() - 15);
-        g2d.drawString("Speed: " + Long.toString(Math.round(this.gameModel.getSpeed())), this.getWidth() - 150, this.getHeight() - 35);
-        g2d.drawString("Press Escape To Exit", this.getWidth() - 135, 20);
+        g2d.drawString("Score: " + Integer.toString(this.gameModel.getScore()), (int)(20 * Breakout.ratioDPI), (int)(20 * Breakout.ratioDPI));
+        g2d.drawString("Lives: " + Integer.toString(this.gameModel.getLives()), (int)(20 * Breakout.ratioDPI), this.getHeight() - (int)(15 * Breakout.ratioDPI));
+        g2d.drawString("Frames per second: " + Long.toString(Math.round(redrawRate)), this.getWidth() - (int)(150 * Breakout.ratioDPI), this.getHeight() - (int)(15 * Breakout.ratioDPI));
+        g2d.drawString("Speed: " + Long.toString(Math.round(this.gameModel.getSpeed())), this.getWidth() - (int)(150 * Breakout.ratioDPI), this.getHeight() - (int)(35 * Breakout.ratioDPI));
+        g2d.drawString("Press Escape To Exit", this.getWidth() - (int)(135 * Breakout.ratioDPI), (int)(20 * Breakout.ratioDPI));
         g2d.setColor(Color.red);
         g2d.fillOval((int)Math.round(this.gameModel.getBallX() * this.getWidth()), (int)Math.round(this.gameModel.getBallY() * this.getHeight()), (int)Math.round(this.gameModel.getBallWidth() * this.getWidth()), (int)Math.round(this.gameModel.getBallHeight() * this.getHeight()));
         g2d.setColor(Color.lightGray);
@@ -94,25 +94,25 @@ public class GameView extends JPanel implements ComponentListener {
             g2d.fillRect((int)(this.getWidth() * 0.05), (int)(this.getHeight() * 0.05), (int)(this.getWidth() * 0.9), (int)(this.getHeight()*0.9));
             g2d.setColor(Color.black);
             g2d.setFont(new Font("TimesRoman", Font.PLAIN, 14));
-            g2d.drawString("Click or press space to play again!", (int)(this.getWidth() * 0.5 - 105), (int)(this.getHeight() * 0.5 + 20));
+            g2d.drawString("Click or press space to play again!", (int)(this.getWidth() * 0.5 - 105), (int)(this.getHeight() * 0.5 + (int)(20 * Breakout.ratioDPI)));
             if(this.gameModel.hasLost()) {
                 g2d.setColor(Color.red);
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
-                g2d.drawString("You have lost!", (int)(this.getWidth() * 0.5 - 120), (int)(this.getHeight() * 0.5 - 10));
+                g2d.drawString("You have lost!", (int)(this.getWidth() * 0.5 - (int)(120 * Breakout.ratioDPI)), (int)(this.getHeight() * 0.5 - (int)(10 * Breakout.ratioDPI)));
             } else {
                 g2d.setColor(Color.green);
                 g2d.setFont(new Font("TimesRoman", Font.BOLD, 36));
-                g2d.drawString("You have won!", (int)(this.getWidth() * 0.5 - 120), (int)(this.getHeight() * 0.5 - 10));
+                g2d.drawString("You have won!", (int)(this.getWidth() * 0.5 - (int)(120 * Breakout.ratioDPI)), (int)(this.getHeight() * 0.5 - (int)(10 * Breakout.ratioDPI)));
             }
         } else if(!this.gameModel.isStarted()) {
             g2d.setColor(Color.white);
-            g2d.drawString("Click or press space to start!", this.getWidth() / 2 - 77, (int)((Constants.PADDLE_Y - Constants.BALL_DIMENSIONS_PCT) * this.getHeight() - 30));
+            g2d.drawString("Click or press space to start!", this.getWidth() / 2 - (int)(77 * Breakout.ratioDPI), (int)((Constants.PADDLE_Y - Constants.BALL_DIMENSIONS_PCT) * this.getHeight() - (int)(30 * Breakout.ratioDPI)));
         } else if(this.gameModel.isPaused()) {
             g2d.setColor(Color.white);
-            g2d.drawString("Click or press space to resume!", this.getWidth() / 2 - 83, (int)((Constants.PADDLE_Y - Constants.BALL_DIMENSIONS_PCT) * this.getHeight() - 30));
+            g2d.drawString("Click or press space to resume!", this.getWidth() / 2 - (int)(83 * Breakout.ratioDPI), (int)((Constants.PADDLE_Y - Constants.BALL_DIMENSIONS_PCT) * this.getHeight() - (int)(30 * Breakout.ratioDPI)));
         } else  {
             g2d.setColor(Color.white);
-            g2d.drawString("Press Space To Pause", this.getWidth() - 135, 40);
+            g2d.drawString("Press Space To Pause", this.getWidth() - (int)(135 * Breakout.ratioDPI), (int)(40 * Breakout.ratioDPI));
         }
     }
 

@@ -2,6 +2,7 @@ public class Constants {
 
     // PUBLIC
 
+    public static final int DEFAULT_DPI = 96;
     public static final int INITIAL_HEIGHT = 600;
     public static final int INITIAL_WIDTH = 1000;
     public static final double ASPECT_RATIO = 5.0 / 3.0;
